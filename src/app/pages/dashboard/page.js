@@ -4,7 +4,7 @@ import  Navbar from "../../componentes/Navbar";
 
 export default async function Dashboard() {
    
-    const users = getUsers();
+    const users = await getUsers();
     return (
         <div>
             <div className="dash">
