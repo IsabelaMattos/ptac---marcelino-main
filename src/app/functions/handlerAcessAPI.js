@@ -11,7 +11,6 @@ const getUserAuthenticated = async (user) => {
     );
 
     const userAuth = await responseOffApi.json();
-    console.log(userAuth)
     return userAuth;
 }
 
