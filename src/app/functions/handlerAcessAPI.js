@@ -14,11 +14,27 @@ const getUserAuthenticated = async (user) => {
     return userAuth;
 }
 
+const postUser = async (user) => {
+
+    const responseOffApi = await fetch(url + "/users", 
+    {
+        method:"POST",
+        cache:"no-cache",
+        headers: {"Content-Type" : "apllication/json"},
+        body: JSON.stringify(user)
+    }
+    )
+    const userSavee = await responseOffApi.json();
+    console.log(userAuth)
+    return userSavee;
+}
+
 const getUsers = async (user) => {
 
-    const responseOffApi = await fetch(url + "/users", {cache:"no-cache"})
-    const useAuth = await responseOffApi.json();
+    const responseOfApi = await fetch(url + "/users", {cache:"no-cache"})
+    const useAuth = await responseOfApi.json();
     return useAuth;
 }
 
-export { getUsers, getUserAuthenticated };
+
+export { getUsers, getUserAuthenticated, postUser };

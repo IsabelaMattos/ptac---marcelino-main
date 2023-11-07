@@ -4,10 +4,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../../componentes/Navbar";
 
 export default async function Registrar() {
-  const registrar = (e) => {
-    e.preventDefault();
-    toast.success('Registrado com sucesso')
-  }
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const { push } = useRouter();
+
+  const handlerFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await postUser(user);
+      return push("/pages/dashboard");
+    } catch {
+      return toast.error("Erro")
+    }
+  };
+  
   return (
     <div className="register">
       <Navbar/>
