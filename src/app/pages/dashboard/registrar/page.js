@@ -1,7 +1,7 @@
 'use client'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from "../../componentes/Navbar";
+import Navbar from "../../../componentes/Navbar";
 
 export default async function Registrar() {
   const [user, setUser] = useState({
