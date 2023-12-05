@@ -16,16 +16,16 @@ const getUserAuthenticated = async (user) => {
 
 const postUser = async (user) => {
 
-    const responseOffApi = await fetch(url + "/users", 
+    const responseOffApi = await fetch(url + "/user", 
     {
         method:"POST",
         cache:"no-cache",
-        headers: {"Content-Type" : "apllication/json"},
+        headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(user)
     }
     )
     const userSavee = await responseOffApi.json();
-    console.log(userAuth)
+    console.log(userSavee)
     return userSavee;
 }
 

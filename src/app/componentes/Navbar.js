@@ -16,7 +16,7 @@ export default function Navbar() {
     <ul>
 
       <li className="links"> <a href="/">Logo</a></li>     
-      <li className="links"> <a href="/pages/registrar">Registrar</a></li>
+      <li className="links"> <a href="/pages/dashboard/registrar">Registrar</a></li>
       <li className="links"><a href="/pages/alterar">Alterar</a></li>
       <li className="links"><button className="open" onClick={handlerRemoveCookies}><a href="#" className="open">Sair</a></button></li>
    </ul>
