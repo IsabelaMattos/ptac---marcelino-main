@@ -37,5 +37,20 @@ const getUsers = async (user) => {
     return useAuth;
 }
 
+const UpdateUser = async(user, id) => {
+    try{ 
+       const responseOfApi = await fetch(url + "/user/" + id, {
+        method: "PUT",
+        headers: {'Content-Type' : 'Application/json'},
+        body: JSON.stringify(user)
+       });
+       const userUpdate = await responseOfApi.json();
+       return userUpdate
+    }
+    catch{
+        return null
+    }
+}
 
-export { getUsers, getUserAuthenticated, postUser };
+
+export { getUsers, getUserAuthenticated, postUser, UpdateUser };
