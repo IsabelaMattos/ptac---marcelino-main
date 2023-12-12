@@ -1,9 +1,9 @@
 'use client'
 import { UpdateUser } from "@/app/functions/handlerAcessAPI";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from 'react-toastify';
-import { React, Suspense, useState } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import { React, Suspense, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../../../componentes/Navbar";
 
 export default function Alterar({params}) {
@@ -31,7 +31,9 @@ export default function Alterar({params}) {
     }
   };
   return (
-    <form method="alterar" onSubmit={handlerFormSumit}>
+    <div>
+      <div className="tudão">
+    <form method="alterar" onSubmit={handlerFormSumit}></form>
     <div className="register">
       <Navbar/>
       <div className="se registre">
@@ -50,8 +52,10 @@ export default function Alterar({params}) {
           <input id="senha" type="text" placeholder="senha" name="senha" required onChange={(e) => {setUser({ ...user, password: e.target.value })}}/>
           </div></center><br/>
           <center> <button className="botao">ENTRAR</button></center>
-    </form></div>
+    </div>
+    </div>
     <ToastContainer />
+    </div>
     </div>
   );
 };
