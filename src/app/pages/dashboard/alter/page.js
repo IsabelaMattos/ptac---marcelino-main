@@ -26,32 +26,32 @@ export default function Alterar({params}) {
         alterado();
       });
       return push("/pages/dashoboard");
+    } catch {
+      return toast.error("Erro");
     }
-  }
+  };
   return (
+    <form method="alterar" onSubmit={handlerFormSumit}>
     <div className="register">
       <Navbar/>
       <div className="se registre">
       <center><h1><i>Alterar-se</i></h1></center>
-      <form onSubmit={alterar}>
       <center>
           <div className="name">
           <label for="">Nome:</label>
-          <input id="nome" type="text" placeholder="Nome"/>
+          <input id="nome" type="text" placeholder="Nome" name="nome" required onChange={(e) => {setUser({ ...user, name: e.target.value })}}/>
           </div><br/>
           <div className="email">
           <label for="">Email:</label>
-          <input id="email" type="email" placeholder="email@gmail.com"/>
+          <input id="email" type="email" placeholder="email@gmail.com" name="email" required onChange={(e) => {setUser({ ...user, email: e.target.value })}}/>
           </div><br/>
           <div className="password">
           <label for="">Senha:</label>
-          <input id="senha" type="text" placeholder="senha"/>
+          <input id="senha" type="text" placeholder="senha" name="senha" required onChange={(e) => {setUser({ ...user, password: e.target.value })}}/>
           </div></center><br/>
-
-         <center> <button className="botao">ENTRAR</button></center>
-        </form>
-      <ToastContainer />
-      </div>
+          <center> <button className="botao">ENTRAR</button></center>
+    </form></div>
+    <ToastContainer />
     </div>
   );
 };
