@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import  Navbar  from "../../../componentes/Navbar"
+import  Navbar  from "../../../componentes/Navbar";
 
 export default function Registrar() {
   const [user, setUser] = useState({
@@ -19,7 +19,7 @@ export default function Registrar() {
     try {
       await postUser(user);
       await new Promise((resolve)=>{
-        toast.success("Usuario registrado com sucesso!");
+        toast.success("Usuário registrado com sucesso!");
         setTimeout(resolve, 5000)
       });
       return push("/pages/dashboard");

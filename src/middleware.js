@@ -6,9 +6,10 @@ export const middleware = async(request) => {
 
     const token = request.cookies.get('token')?.value;
     const urlLogin = new URL('/', request.url);
-    const urlDash = new URL('/pages/dashboard', request.url)
-    const urlRegister = new URL('/pages/registrar', request.url)
-    const urlAlter = new URL('/pages/alter', request.url)
+    const urlDash = new URL('/pages/dashboard', request.url);
+    const urlRegister = new URL('/pages/registrar', request.url);
+    const urlAlterar = new URL('/pages/alterar', request.url);
+    const urlAlter = new URL('/pages/alter', request.url);
     const isTokenValidated = await validateToken(token);
 
     if (!isTokenValidated || !token) {
@@ -18,7 +19,7 @@ export const middleware = async(request) => {
     }
 
     if (!isTokenValidated || !token) {
-        if (request.nextUrl.pathname === '/pages/registrar') {
+        if (request.nextUrl.pathname === '/pages/alterar') {
             return NextResponse.redirect(urlLogin);
         }
     }
@@ -29,14 +30,25 @@ export const middleware = async(request) => {
         }
     }
 
+    if (!isTokenValidated || !token) {
+        if (request.nextUrl.pathname === '/pages/registrar') {
+            return NextResponse.redirect(urlLogin);
+        }
+    }
+
     if (isTokenValidated || token) {
         if (request.nextUrl.pathname === '/') {
-            return NextResponse.redirect(urlDashboard);
+            return NextResponse.redirect(urlDash);
         }
     }
     if (isTokenValidated || token) {
         if (request.nextUrl.pathname === '/') {
             return NextResponse.redirect(urlRegister);
+        }
+    }
+    if (isTokenValidated || token) {
+        if (request.nextUrl.pathname === '/') {
+            return NextResponse.redirect(urlAlterar);
         }
     }
     if (isTokenValidated || token) {
@@ -47,6 +59,6 @@ export const middleware = async(request) => {
     NextResponse.next();
 };
 export const config = {
-    matcher: ['/', '/pages/dashboard', '/pages/registrar', '/pages/alter']
+    matcher: ['/', '/pages/dashboard', '/pages/alterar', '/pages/registrar', '/pages/alter']
 };
 
