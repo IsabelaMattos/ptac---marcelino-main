@@ -6,10 +6,27 @@ import { React, Suspense, useState } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../../../componentes/Navbar";
 
-export default function Alterar() {
-  const alterar = (e) => {
-    e.preventDefault();
-    toast.success('Alterado com sucesso')
+export default function Alterar({params}) {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  const {push} = useRouter()
+  const alterado = () => {
+
+  }
+  const handlerFormSumit = async (event) => {
+    event.preventDefault();
+    try {
+      await UpdateUser(user, params.id);
+      await new Promise((resolve) => {
+        toast.success("Alterado com sucesso!");
+        setTimeout(resolve, 5000);
+        alterado();
+      });
+      return push("/pages/dashoboard");
+    }
   }
   return (
     <div className="register">
