@@ -16,7 +16,7 @@ export default function Alterar({params}) {
   const alterado = () => {
 
   }
-  const handlerFormSumit = async (event) => {
+  const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
       await UpdateUser(user, params.id);
@@ -33,7 +33,7 @@ export default function Alterar({params}) {
   return (
     <div>
       <div className="tudão">
-    <form method="alterar" onSubmit={handlerFormSumit}></form>
+    <form method="alterar" onSubmit={handlerSubmit}></form>
     <div className="register">
       <Navbar/>
       <div className="se registre">
