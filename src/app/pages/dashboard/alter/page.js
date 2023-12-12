@@ -6,7 +6,7 @@ import { React, Suspense, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../../../componentes/Navbar";
 
-export default function Alterar({params}) {
+export default function Alter({params}) {
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -41,15 +41,15 @@ export default function Alterar({params}) {
       <center>
           <div className="name">
           <label for="">Nome:</label>
-          <input id="nome" type="text" placeholder="Nome" name="nome" required onChange={(e) => {setUser({ ...user, name: e.target.value })}}/>
+          <input id="nome" type="text" placeholder="Nome" onChange={(e) => { setUser({...user, name: e.target.value })}}/>
           </div><br/>
           <div className="email">
           <label for="">Email:</label>
-          <input id="email" type="email" placeholder="email@gmail.com" name="email" required onChange={(e) => {setUser({ ...user, email: e.target.value })}}/>
+          <input id="email" type="email" placeholder="email@gmail.com" onChange={(e) => { setUser({...user, email: e.target.value })}}/>
           </div><br/>
           <div className="password">
           <label for="">Senha:</label>
-          <input id="senha" type="text" placeholder="senha" name="senha" required onChange={(e) => {setUser({ ...user, password: e.target.value })}}/>
+          <input id="senha" type="text" placeholder="senha" onChange={(e) => { setUser({...user, senha: e.target.value })}}/>
           </div></center><br/>
           <center> <button className="botao">ENTRAR</button></center>
     </div>

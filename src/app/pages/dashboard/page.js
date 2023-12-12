@@ -7,7 +7,7 @@ export default async function Dashboard() {
     const users = await getUsers();
     return (
         <div>
-            <div className="dash">
+            <div className="dashboard">
              <Navbar/>
          </div>
              <div className="classlist">

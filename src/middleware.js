@@ -8,17 +8,11 @@ export const middleware = async(request) => {
     const urlLogin = new URL('/', request.url);
     const urlDash = new URL('/pages/dashboard', request.url)
     const urlRegister = new URL('/pages/registrar', request.url)
-    const urlAlterar = new URL('/pages/alterar', request.url)
+    const urlAlter = new URL('/pages/alter', request.url)
     const isTokenValidated = await validateToken(token);
 
     if (!isTokenValidated || !token) {
         if (request.nextUrl.pathname === '/pages/dashboard') {
-            return NextResponse.redirect(urlLogin);
-        }
-    }
-
-    if (!isTokenValidated || !token) {
-        if (request.nextUrl.pathname === '/pages/alterar') {
             return NextResponse.redirect(urlLogin);
         }
     }
@@ -29,9 +23,15 @@ export const middleware = async(request) => {
         }
     }
 
+    if (!isTokenValidated || !token) {
+        if (request.nextUrl.pathname === '/pages/alter') {
+            return NextResponse.redirect(urlLogin);
+        }
+    }
+
     if (isTokenValidated || token) {
         if (request.nextUrl.pathname === '/') {
-            return NextResponse.redirect(urlDash);
+            return NextResponse.redirect(urlDashboard);
         }
     }
     if (isTokenValidated || token) {
@@ -41,14 +41,12 @@ export const middleware = async(request) => {
     }
     if (isTokenValidated || token) {
         if (request.nextUrl.pathname === '/') {
-            return NextResponse.redirect(urlAlterar);
+            return NextResponse.redirect(urlAlter);
         }
     }
-
-
     NextResponse.next();
 };
 export const config = {
-    matcher: ['/', '/pages/dashboard', '/pages/alterar', '/pages/registrar']
+    matcher: ['/', '/pages/dashboard', '/pages/registrar', '/pages/alter']
 };
 
